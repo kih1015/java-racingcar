@@ -18,6 +18,8 @@ public class Application {
             advanceCars(cars);
             System.out.println();
         }
+
+        printWinners(cars);
     }
     private static String[] readCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -25,11 +27,7 @@ public class Application {
     }
     private static int readTries() {
         System.out.println("시도할 회수는 몇회인가요?");
-        int tries = Integer.parseInt(Console.readLine());
-        if (tries <= 0) {
-            throw new IllegalArgumentException("시도 횟수는 1 이상의 정수여야 합니다.");
-        }
-        return tries;
+        return Integer.parseInt(Console.readLine());
     }
     private static void advanceCars(Car[] cars){
         for (Car car : cars) {
@@ -38,5 +36,23 @@ public class Application {
             }
             System.out.println(car);
         }
+    }
+    private static void printWinners(Car[] cars) {
+        int maxPosition = 0;
+        for (Car car : cars) {
+            maxPosition = Math.max(maxPosition, car.getPosition());
+        }
+
+        StringBuilder winners = new StringBuilder();
+        for (Car car : cars) {
+            if (car.getPosition() == maxPosition) {
+                if (!winners.isEmpty()) {
+                    winners.append(", ");
+                }
+                winners.append(car.getName());
+            }
+        }
+
+        System.out.println("최종 우승자 : " + winners);
     }
 }
