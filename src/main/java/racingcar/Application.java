@@ -50,16 +50,14 @@ public class Application {
             maxPosition = Math.max(maxPosition, car.getPosition());
         }
 
-        StringBuilder winners = new StringBuilder();
+        List<String> winnerCarNames = new ArrayList<>();
         for (Car car : cars) {
             if (car.getPosition() == maxPosition) {
-                if (!winners.isEmpty()) {
-                    winners.append(", ");
-                }
-                winners.append(car.getName());
+                winnerCarNames.add(car.getName());
             }
         }
 
+        String winners = String.join(", ", winnerCarNames);
         System.out.println("최종 우승자 : " + winners);
     }
 }
