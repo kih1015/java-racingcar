@@ -3,14 +3,17 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Application {
     public static void main(String[] args) {
         String[] carNames = readCarNames();
         int tries = readTries();
 
-        Car[] cars = new Car[carNames.length];
-        for (int i = 0; i < carNames.length; i++) {
-            cars[i] = new Car(carNames[i]);
+        List<Car> cars = new ArrayList<>(carNames.length);
+        for (String carName : carNames) {
+            cars.add(new Car(carName));
         }
 
         System.out.println("\n실행 결과");
@@ -32,7 +35,7 @@ public class Application {
         return Integer.parseInt(Console.readLine());
     }
 
-    private static void advanceCars(Car[] cars) {
+    private static void advanceCars(List<Car> cars) {
         for (Car car : cars) {
             if (Randoms.pickNumberInRange(0, 9) >= 4) {
                 car.advance();
@@ -41,7 +44,7 @@ public class Application {
         }
     }
 
-    private static void printWinners(Car[] cars) {
+    private static void printWinners(List<Car> cars) {
         int maxPosition = 0;
         for (Car car : cars) {
             maxPosition = Math.max(maxPosition, car.getPosition());
