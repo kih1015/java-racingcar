@@ -7,21 +7,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Racing {
+    private List<Raceable> raceables;
+
     public void run() {
         String[] names = readNames();
         int tries = readTries();
 
-        List<Raceable> raceables = new ArrayList<>(names.length);
+        raceables = new ArrayList<>(names.length);
         for (String carName : names) {
             raceables.add(new Car(carName));
         }
 
         System.out.println("\n실행 결과");
         for (int i = 0; i < tries; i++) {
-            advanceAll(raceables);
+            advanceAll();
             System.out.println();
         }
-        printWinners(raceables);
+        printWinners();
     }
 
     private String[] readNames() {
@@ -34,7 +36,7 @@ public class Racing {
         return Integer.parseInt(Console.readLine());
     }
 
-    private void advanceAll(List<Raceable> raceables) {
+    private void advanceAll() {
         for (Raceable raceable : raceables) {
             if (Randoms.pickNumberInRange(0, 9) >= 4) {
                 raceable.advance();
@@ -43,7 +45,7 @@ public class Racing {
         }
     }
 
-    private void printWinners(List<Raceable> raceables) {
+    private void printWinners() {
         int maxPosition = 0;
         for (Raceable raceable : raceables) {
             maxPosition = Math.max(maxPosition, raceable.getPosition());
