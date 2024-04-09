@@ -44,14 +44,14 @@ public class Racing {
         System.out.println(raceable);
     }
 
-    private void printWinners(List<Car> cars) {
+    private void printWinners(List<Raceable> cars) {
         int maxPosition = 0;
-        for (Car car : cars) {
+        for (Raceable car : cars) {
             maxPosition = Math.max(maxPosition, car.getPosition());
         }
 
         List<String> winnerCarNames = new ArrayList<>();
-        for (Car car : cars) {
+        for (Raceable car : cars) {
             if (car.getPosition() == maxPosition) {
                 winnerCarNames.add(car.getName());
             }
