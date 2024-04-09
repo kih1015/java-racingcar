@@ -18,7 +18,7 @@ public class Racing {
 
         System.out.println("\n실행 결과");
         for (int i = 0; i < tries; i++) {
-            advanceCars(cars);
+            advance(cars);
             System.out.println();
         }
 
@@ -35,7 +35,7 @@ public class Racing {
         return Integer.parseInt(Console.readLine());
     }
 
-    private void advanceCars(List<Car> cars) {
+    private void advance(List<Car> cars) {
         for (Car car : cars) {
             if (Randoms.pickNumberInRange(0, 9) >= 4) {
                 car.advance();
