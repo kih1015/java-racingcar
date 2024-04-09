@@ -11,20 +11,20 @@ public class Racing {
         String[] names = readNames();
         int tries = readTries();
 
-        List<Raceable> cars = new ArrayList<>(names.length);
+        List<Raceable> raceables = new ArrayList<>(names.length);
         for (String carName : names) {
-            cars.add(new Car(carName));
+            raceables.add(new Car(carName));
         }
 
         System.out.println("\n실행 결과");
         for (int i = 0; i < tries; i++) {
-            for (Raceable car : cars) {
+            for (Raceable car : raceables) {
                 advance(car);
             }
             System.out.println();
         }
 
-        printWinners(cars);
+        printWinners(raceables);
     }
 
     private String[] readNames() {
@@ -44,16 +44,16 @@ public class Racing {
         System.out.println(raceable);
     }
 
-    private void printWinners(List<Raceable> cars) {
+    private void printWinners(List<Raceable> raceables) {
         int maxPosition = 0;
-        for (Raceable car : cars) {
-            maxPosition = Math.max(maxPosition, car.getPosition());
+        for (Raceable raceable : raceables) {
+            maxPosition = Math.max(maxPosition, raceable.getPosition());
         }
 
         List<String> winnerCarNames = new ArrayList<>();
-        for (Raceable car : cars) {
-            if (car.getPosition() == maxPosition) {
-                winnerCarNames.add(car.getName());
+        for (Raceable raceable : raceables) {
+            if (raceable.getPosition() == maxPosition) {
+                winnerCarNames.add(raceable.getName());
             }
         }
 
