@@ -18,12 +18,9 @@ public class Racing {
 
         System.out.println("\n실행 결과");
         for (int i = 0; i < tries; i++) {
-            for (Raceable car : raceables) {
-                advance(car);
-            }
+            advance(raceables);
             System.out.println();
         }
-
         printWinners(raceables);
     }
 
@@ -37,11 +34,13 @@ public class Racing {
         return Integer.parseInt(Console.readLine());
     }
 
-    private void advance(Raceable raceable) {
-        if (Randoms.pickNumberInRange(0, 9) >= 4) {
-            raceable.advance();
+    private void advance(List<Raceable> raceables) {
+        for (Raceable raceable : raceables) {
+            if (Randoms.pickNumberInRange(0, 9) >= 4) {
+                raceable.advance();
+            }
+            System.out.println(raceable);
         }
-        System.out.println(raceable);
     }
 
     private void printWinners(List<Raceable> raceables) {
