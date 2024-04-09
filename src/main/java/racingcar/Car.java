@@ -1,6 +1,6 @@
 package racingcar;
 
-public class Car {
+public class Car implements Raceable {
     private final String name;
     private int position = 0;
 
