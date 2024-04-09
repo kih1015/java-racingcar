@@ -11,14 +11,14 @@ public class Racing {
         String[] names = readNames();
         int tries = readTries();
 
-        List<Car> cars = new ArrayList<>(names.length);
+        List<Raceable> cars = new ArrayList<>(names.length);
         for (String carName : names) {
             cars.add(new Car(carName));
         }
 
         System.out.println("\n실행 결과");
         for (int i = 0; i < tries; i++) {
-            for (Car car : cars) {
+            for (Raceable car : cars) {
                 advance(car);
             }
             System.out.println();
