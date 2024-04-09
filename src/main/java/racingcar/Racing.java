@@ -35,12 +35,12 @@ public class Racing {
         return Integer.parseInt(Console.readLine());
     }
 
-    private void advance(List<Car> cars) {
-        for (Car car : cars) {
+    private void advance(List<Raceable> raceables) {
+        for (Raceable raceable : raceables) {
             if (Randoms.pickNumberInRange(0, 9) >= 4) {
-                car.advance();
+                raceable.advance();
             }
-            System.out.println(car);
+            System.out.println(raceable);
         }
     }
 
