@@ -8,11 +8,11 @@ import java.util.List;
 
 public class Racing {
     public void run() {
-        String[] carNames = readNames();
+        String[] names = readNames();
         int tries = readTries();
 
-        List<Car> cars = new ArrayList<>(carNames.length);
-        for (String carName : carNames) {
+        List<Car> cars = new ArrayList<>(names.length);
+        for (String carName : names) {
             cars.add(new Car(carName));
         }
 
