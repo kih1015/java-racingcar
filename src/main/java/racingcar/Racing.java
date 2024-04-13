@@ -1,6 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,18 +19,8 @@ public class Racing {
     public void run() {
         System.out.println("\n실행 결과");
         for (int i = 0; i < totalTry; i++) {
-            advanceAll();
-            System.out.println();
-        }
-    }
-
-
-    private void advanceAll() {
-        for (Car car : cars) {
-            if (Randoms.pickNumberInRange(0, 9) >= 4) {
-                car.advance();
-            }
-            System.out.println(car);
+            TryAdvanceAll();
+            printState();
         }
     }
 
@@ -50,5 +41,20 @@ public class Racing {
         }
 
         return winnerCarNames;
+    }
+
+    private void TryAdvanceAll() {
+        for (Car car : cars) {
+            if (Randoms.pickNumberInRange(0, 9) >= 4) {
+                car.advance();
+            }
+        }
+    }
+
+    private void printState() {
+        for (Car car : cars) {
+            System.out.println(car);
+        }
+        System.out.println();
     }
 }
