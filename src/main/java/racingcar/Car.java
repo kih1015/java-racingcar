@@ -28,6 +28,10 @@ public class Car {
         return this.position;
     }
 
+    public void setRandomNumberGenerator(RandomNumberGenerator randomNumberGenerator) {
+        this.randomNumberGenerator = randomNumberGenerator;
+    }
+
     @Override
     public String toString() {
         return name + " : " + "-".repeat(position);
