@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Car {
     private final String name;
     private int position = 0;
+    private RandomNumberGenerator randomNumberGenerator = new Generator0to9();
 
     public Car(String name) {
         if (name.length() > 5) {
@@ -14,7 +15,7 @@ public class Car {
     }
 
     public void TryAdvance() {
-        if (Randoms.pickNumberInRange(0, 9) >= 4) {
+        if (randomNumberGenerator.pickNumber() >= 4) {
             this.position++;
         }
     }
