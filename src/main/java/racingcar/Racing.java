@@ -45,9 +45,7 @@ public class Racing {
 
     private void TryAdvanceAll() {
         for (Car car : cars) {
-            if (Randoms.pickNumberInRange(0, 9) >= 4) {
-                car.advance();
-            }
+            car.TryAdvance();
         }
     }
 
