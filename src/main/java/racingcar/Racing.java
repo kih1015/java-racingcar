@@ -21,7 +21,6 @@ public class Racing {
             advanceAll();
             System.out.println();
         }
-        printWinners();
     }
 
 
@@ -34,13 +33,15 @@ public class Racing {
         }
     }
 
-    private void printWinners() {
+    public List<String> getWinnerNames() {
         int maxPosition = 0;
 
+        // 가장 높은 위치 찾기
         for (Car car : cars) {
             maxPosition = Math.max(maxPosition, car.getPosition());
         }
 
+        // 가장 높은 위치에 있는 차량 찾기
         List<String> winnerCarNames = new ArrayList<>();
         for (Car car : cars) {
             if (car.getPosition() == maxPosition) {
@@ -48,7 +49,6 @@ public class Racing {
             }
         }
 
-        String winners = String.join(", ", winnerCarNames);
-        System.out.println("최종 우승자 : " + winners);
+        return winnerCarNames;
     }
 }
