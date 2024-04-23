@@ -1,6 +1,5 @@
 package racingcar;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Racing {
@@ -18,27 +17,27 @@ public class Racing {
         }
         int totalTry = view.readTry();
         view.printIntroForResult();
+        // try 횟수만큼 반복
         for (int i = 0; i < totalTry; i++) {
             TryAdvanceAll();
-            view.printState(cars.stream().map(Car::toString).toList());
+            view.printState(cars.stream()
+                    .map(Car::toString)
+                    .toList());
         }
         view.printWinners(getWinnerNames());
     }
 
     private List<String> getWinnerNames() {
-        int maxPosition = 0;
-        // 가장 높은 위치 찾기
-        for (Car car : cars) {
-            maxPosition = Math.max(maxPosition, car.getPosition());
-        }
-        // 가장 높은 위치에 있는 차량 찾기
-        List<String> winnerCarNames = new ArrayList<>();
-        for (Car car : cars) {
-            if (car.getPosition() == maxPosition) {
-                winnerCarNames.add(car.getName());
-            }
-        }
-        return winnerCarNames;
+        // 가장 높은 위치를 구함
+        final int maxPosition = cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
+        // 가장 높은 위치에 있는 차량의 이름을 가져옴
+        return cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .map(Car::getName)
+                .toList();
     }
 
     private void TryAdvanceAll() {
