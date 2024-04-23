@@ -15,6 +15,10 @@ public class View {
         return Integer.parseInt(Console.readLine());
     }
 
+    public void printIntroForResult() {
+        System.out.println("\n실행 결과");
+    }
+
     public void printWinners(List<String> winnersNames) {
         String winners = String.join(", ", winnersNames);
         System.out.println("최종 우승자 : " + winners);
