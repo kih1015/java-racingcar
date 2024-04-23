@@ -5,13 +5,18 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Car {
     private final String name;
     private int position = 0;
-    private RandomNumberGenerator randomNumberGenerator = new Generator0to9();
+    private RandomNumberGenerator randomNumberGenerator;
 
     public Car(String name) {
+        this(name, new Generator0to9());
+    }
+
+    public Car(String name, RandomNumberGenerator randomNumberGenerator) {
         if (name.length() > 5) {
             throw new IllegalArgumentException("이름은 5자 이하만 가능합니다.");
         }
         this.name = name;
+        this.randomNumberGenerator = randomNumberGenerator;
     }
 
     public void TryAdvance() {
